@@ -7,7 +7,7 @@ let textoCompleto1 = paragrafos1.forEach((paragrafo) => {
     texto.push(`<p>${paragrafo}</p>`);
 });
 
-console.log(texto)
+// console.log(texto)
 
 // MAP
 
@@ -26,6 +26,10 @@ let filtrados = nomes.filter((nome) => {
        return nome
     }
 })
+
+let mistura = ["k", "j", {oi: "oi"}, ["j", "l"], function salve(a, b) {return a + b}];
+let filtered = mistura.filter(i => typeof(i) == "string");
+console.log(filtered)
 
 // console.log(filtrados)
 
