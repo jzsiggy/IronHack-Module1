@@ -23,3 +23,9 @@ h1 {
 ul {
     list-style: none;
 }
+
+@media (max-width: 600px) {
+    body {
+        background-color: red;
+    }
+}
