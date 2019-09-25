@@ -77,16 +77,17 @@ function streetFighterSelection(fighters, position, moves){
 // console.log(getX("(0, 17)"))
 // console.log(getY("(0, 17)"));
 
-fighters = [
+let fighters = [
 	["Ryu", "E.Honda", "Blanka", "Guile", "Balrog", "Vega"],
 	["Ken", "Chun Li", "Zangief", "Dhalsim", "Sagat", "M.Bison"]
 ];
 
-movesRight = ['right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right'];
-movesLeft = ['left', 'left', 'left', 'left', 'left', 'left', 'left', 'left', 'left'];
+let movesRight = ['right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right'];
+let movesLeft = ['left', 'left', 'left', 'left', 'left', 'left', 'left', 'left', 'left'];
+let moves = ['up', 'left', 'right', 'left', 'left']
 
 position = "(0, 0)";
 
 // console.log(setPosition(4, 7))
 
-console.log(streetFighterSelection(fighters, position, movesLeft))
+console.log(streetFighterSelection(fighters, position, moves))

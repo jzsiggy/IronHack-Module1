@@ -5,11 +5,11 @@ class Soldier {
         this.strength = strength;
     };
 
-    attack = () => {
+    attack() {
         return this.strength;
     };
 
-    receiveDamage = (damage) => {
+    receiveDamage(damage) {
         this.health -= damage;
     };
 }
@@ -21,7 +21,7 @@ class Viking extends Soldier{
         this.name = name;
     };
 
-    receiveDamage = (damage) => {
+    receiveDamage(damage) {
         this.health -= damage;
         if (this.health <= 0) {
             return `${this.name} has died in act of combat`
@@ -31,7 +31,7 @@ class Viking extends Soldier{
         }
     }
 
-    battleCry = () => {
+    battleCry() {
         return "Odin Owns You All!"
     }
 }
@@ -42,7 +42,7 @@ class Saxon extends Soldier{
         super(health, strength);
     }
 
-    receiveDamage = (damage) => {
+    receiveDamage(damage) {
         this.health -= damage;
         return this.health <= 0 ? `A Saxon has died in combat`: `A Saxon has received ${damage} points of damage`;
     }
@@ -55,15 +55,15 @@ class War {
         this.saxonArmy = [];
     }
 
-    addViking = (viking) => {
+    addViking(viking) {
         this.vikingArmy.push(viking);
     }
 
-    addSaxon = (saxon) => {
+    addSaxon(saxon) {
         this.saxonArmy.push(saxon);
     }
 
-    vikingAttack = () => {
+    vikingAttack() {
         let saxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
         let vikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
 
@@ -79,7 +79,7 @@ class War {
         return returnValue;
     }
 
-    saxonAttack = () => {
+    saxonAttack() {
         let vikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
         let saxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
 
@@ -95,7 +95,7 @@ class War {
         return returnValue;
     }
 
-    showStatus = () => {
+    showStatus() {
         if (!this.vikingArmy.length) {
             return `Saxons have fought for their lives and survive another day...`
         }
@@ -106,4 +106,36 @@ class War {
             return `Vikings and Saxons are still in the thick of battle.`
         }
     }
+}
+
+/*  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  IMPLEMENTATION  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  */
+
+let war = new War();
+
+let seedVikings = (quantity) => {
+    for (let x = 0; x < quantity; x++) {
+        let strength = Math.floor(Math.random() * 100);
+        let health= Math.floor(Math.random() * 100);
+        let id = Math.random();
+
+        war.addViking(new Viking(`${id}`, health, strength));
+    }
+}
+
+let seedSaxons = (quantity) => {
+    for (let x = 0; x < quantity; x++) {
+        let strength = Math.floor(Math.random() * 100);
+        let health= Math.floor(Math.random() * 100);
+
+        war.addSaxon(new Saxon(health, strength));
+    }
+}
+
+seedVikings(10);
+seedSaxons(10);
+
+while (war.showStatus() == `Vikings and Saxons are still in the thick of battle.`) {
+    console.log(war.saxonAttack());
+    console.log(war.vikingAttack());
+    console.log(war.showStatus());
 }
